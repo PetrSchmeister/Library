@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj" />
   </ItemGroup>
 
 </Project>

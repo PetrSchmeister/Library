@@ -4,14 +4,16 @@ using Library.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDBContext))]
-    partial class LibraryDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210722110055_fix Changes identity - drop ID column")]
+    partial class fixChangesidentitydropIDcolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,11 +50,6 @@ namespace Library.Infrastructure.Migrations
 
             modelBuilder.Entity("Library.Core.Domains.Change", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
@@ -66,27 +63,7 @@ namespace Library.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
                     b.ToTable("Changes");
-                });
-
-            modelBuilder.Entity("Library.Core.Domains.Change", b =>
-                {
-                    b.HasOne("Library.Core.Domains.Book", "Book")
-                        .WithMany("Changes")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("Library.Core.Domains.Book", b =>
-                {
-                    b.Navigation("Changes");
                 });
 #pragma warning restore 612, 618
         }

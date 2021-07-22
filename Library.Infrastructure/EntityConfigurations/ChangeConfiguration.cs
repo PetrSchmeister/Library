@@ -9,7 +9,7 @@ namespace Library.Infrastructure.EntityConfigurations {
 
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.Id).ValueGeneratedNever();
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
 
             builder.HasOne<Book>(s => s.Book)
                 .WithMany(g => g.Changes)

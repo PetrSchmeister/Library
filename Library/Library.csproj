@@ -30,6 +30,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library.Infrastructure\Library.Infrastructure.csproj" />
+    <ProjectReference Include="..\Library.Services.Contracts\Library.Services.Contracts.csproj" />
+    <ProjectReference Include="..\Library.Services\Library.Services.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
