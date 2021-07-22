@@ -1,2 +1,13 @@
 <h1>Changes</h1>
-{{changesService.changes$ | async | json}}
+<table class="table">
+  <thead>
+    <th>#</th>
+    <th>Change</th>
+    <th></th>
+  </thead>
+  <tr *ngFor="let change of changesService.changes$ | async; let i = index;">
+    <td>{{i + 1}}.</td>
+    <td>Book '{{change.bookId}}' '{{change.property | changePropertyName}}' was changed to {{change.value}} at
+      {{change.timestamp}}</td>
+  </tr>
+</table>
